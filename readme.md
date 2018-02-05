@@ -106,32 +106,123 @@ css 并不像 js 相互关联,
 
 ---
 
-### 2D-Transitions
+- [点击 >> 2D-Transitions](#2d-transitions)
 
-
-
----
-
-### Background-Transitions
+更多
 
 ---
 
-### Icons
+<detail>
+
+- [点击-> 文件Background-Transitions](./background-transitions.md)
+
+- [点击-> 文件Icons](./icons.md)
+
+- [点击-> 文件Border-Transitions](./border-transitions.md)
+
+- [点击-> 文件Shadow-and-Glow-Transitions](./shadow-and-glow-transitions.md)
+
+- [点击-> 文件Speech-Bubbles](./speech-bubbles.md)
+
+- [点击-> 文件Curl](./curl.md)
+
+</detail>
+
+## 2D-Transitions
+
+1. Grow 
+
+``` css
+/* Grow */
+.hvr-grow {
+    display: inline-block; 
+    /* 显示方式 > 内嵌区块 */
+    vertical-align: middle;
+    /* 反正就是对齐 */
+    transform: translateZ(0);
+    /*  */
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    /* 区块阴影 */
+    backface-visibility: hidden;
+    /* 表示背面不可见 */
+    -moz-osx-font-smoothing: grayscale;
+    /* Firefox 用灰度抗锯齿渲染文本 */
+    transition-duration: 0.3s;
+    /*  动画时间 */
+    transition-property: transform;
+    /* css属性-transform 渐进变化 */
+}
+
+.hvr-grow:hover, /* 鼠标位于元素 */
+.hvr-grow:focus,/* 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 */
+.hvr-grow:active {/* 它代表的是用户按下按键和松开按键之间的时间 */
+    transform: scale(1.1);
+}
+```
+
+2. Shrink
+
+```
+/* Shrink */
+.hvr-shrink {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-shrink:hover, .hvr-shrink:focus, .hvr-shrink:active {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+```
 
 ---
 
-### Border-Transitions
+### css-属性-解释
 
----
+- display
 
-### Shadow-and-Glow-Transitions
+> CSS属性指定用于元素的呈现框的类型
 
+- vertical-align
 
----
+> CSS 的属性 vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
 
-### Speech-Bubbles
+> middle - 元素中垂线与父元素的基线加上小写x一半的高度值对齐。
 
+- transform
 
----
+> CSS transform 属性允许你修改CSS视觉格式模型的坐标空间。使用它，元素可以被转换（translate）、旋转（rotate）、缩放（scale）、倾斜（skew）。 只应用-`display:*block*` 的元素
 
-### Curl
+- backface-visibility
+
+>  属性指定当元素背面朝向观察者时是否可见
+
+- -moz-osx-font-smoothing
+
+> Firefox 实现了名为 -moz-osx-font-smoothing 的相似属性。这个属性仅在 Mac OS X / macOS 下生效。
+
+- transition-duration
+
+> 属性以秒或毫秒为单位指定过渡动画所需的时间。默认值为 0s ，表示不出现过渡动画
+
+- transition-property
+
+> 指定哪个或哪些 CSS 属性用于过渡。只有指定的属性才会在过渡中发生动画，其它属性仍如通常那样瞬间变化。
+
+- :hover
+
+> CSS伪类适用于用户使用指示设备虚指一个元素（没有激活它）的情况
+
+- :focus
+
+> 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发
+
+- :active
+
+> 它代表的是用户按下按键和松开按键之间的时间
