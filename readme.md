@@ -104,9 +104,13 @@ css 并不像 js 相互关联,
 
 ---
 
+[单个css-属性-解释](#css-属性-解释)
+
 ---
 
-- [点击 >> 2D-Transitions](#2d-transitions)
+分-动画效果类型
+
+- [ >> 2D-Transitions](#2d-transitions)
 
 更多
 
@@ -114,17 +118,17 @@ css 并不像 js 相互关联,
 
 <detail>
 
-- [点击-> 文件Background-Transitions](./background-transitions.md)
+- [-> 文件Background-Transitions](./background-transitions.md)
 
-- [点击-> 文件Icons](./icons.md)
+- [-> 文件Icons](./icons.md)
 
-- [点击-> 文件Border-Transitions](./border-transitions.md)
+- [-> 文件Border-Transitions](./border-transitions.md)
 
-- [点击-> 文件Shadow-and-Glow-Transitions](./shadow-and-glow-transitions.md)
+- [-> 文件Shadow-and-Glow-Transitions](./shadow-and-glow-transitions.md)
 
-- [点击-> 文件Speech-Bubbles](./speech-bubbles.md)
+- [-> 文件Speech-Bubbles](./speech-bubbles.md)
 
-- [点击-> 文件Curl](./curl.md)
+- [-> 文件Curl](./curl.md)
 
 </detail>
 
@@ -157,17 +161,20 @@ css 并不像 js 相互关联,
 .hvr-grow:focus,/* 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 */
 .hvr-grow:active {/* 它代表的是用户按下按键和松开按键之间的时间 */
     transform: scale(1.1);
+    /* 放大 */
 }
 ```
 
 2. Shrink
 
-```
+``` css
 /* Shrink */
 .hvr-shrink {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
+  /* -webkit- 各大内核的试验效果前缀 */
+  /* perspective 属性指定了观察者与z=0平面的距离 */
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px transparent;
   -webkit-transition-duration: 0.3s;
@@ -178,9 +185,133 @@ css 并不像 js 相互关联,
 .hvr-shrink:hover, .hvr-shrink:focus, .hvr-shrink:active {
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
+  /* 缩小 */
 }
 ```
 
+3. Pulse
+
+``` css
+/* Pulse */
+@-webkit-keyframes hvr-pulse {/*  动画效果名称-定义 */
+  25% {  /* 时间 25% ～ 75% */
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    /*  先大 */
+  }
+  75% { /* 时间 75% ～ 100% */
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    /* 后小 */
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.hvr-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  /* 动画名字 */
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  /* 动画-运动速率 */
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  /* infinite 无限循环播放动画. */
+
+}
+```
+
+4. Pulse-Grow 
+
+``` css
+/* Pulse Grow */
+@-webkit-keyframes hvr-pulse-grow {
+  to {       /* 元素动画-最终形态 */
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+@keyframes hvr-pulse-grow {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+.hvr-pulse-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-pulse-grow:hover, .hvr-pulse-grow:focus, .hvr-pulse-grow:active {
+  -webkit-animation-name: hvr-pulse-grow;
+  animation-name: hvr-pulse-grow;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+  /* 动画交替反向运行 */
+}
+```
+
+5. Pulse-Shrink
+
+``` css
+/* Pulse Shrink */
+@-webkit-keyframes hvr-pulse-shrink {
+  to {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse-shrink {
+  to {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.hvr-pulse-shrink {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-pulse-shrink:hover, .hvr-pulse-shrink:focus, .hvr-pulse-shrink:active {
+  -webkit-animation-name: hvr-pulse-shrink;
+  animation-name: hvr-pulse-shrink;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+```
 ---
 
 ### css-属性-解释
@@ -199,6 +330,12 @@ css 并不像 js 相互关联,
 
 > CSS transform 属性允许你修改CSS视觉格式模型的坐标空间。使用它，元素可以被转换（translate）、旋转（rotate）、缩放（scale）、倾斜（skew）。 只应用-`display:*block*` 的元素
 
+> [perspective >> 属性指定了观察者与z=0平面的距离](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective)
+
+- box-shadow
+
+> 定义元素-broder-边缘阴影
+
 - backface-visibility
 
 >  属性指定当元素背面朝向观察者时是否可见
@@ -214,6 +351,10 @@ css 并不像 js 相互关联,
 - transition-property
 
 > 指定哪个或哪些 CSS 属性用于过渡。只有指定的属性才会在过渡中发生动画，其它属性仍如通常那样瞬间变化。
+
+- animation-direction
+
+>  CSS 属性指示动画是否反向播放
 
 - :hover
 
