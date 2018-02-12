@@ -108,15 +108,13 @@ css 并不像 js 相互关联,
 
 ---
 
-分-动画效果类型
+分-动画效果类型 < 前面详细, 后面只解释不同 >
 
 - [ >> 2D-Transitions](#2d-transitions)
 
-更多
+<details>
 
----
-
-<detail>
+ <summary>更多 css 动画效果</summary>
 
 - [-> 文件Background-Transitions](./background-transitions.md)
 
@@ -130,11 +128,13 @@ css 并不像 js 相互关联,
 
 - [-> 文件Curl](./curl.md)
 
-</detail>
+</details>
 
 ## 2D-Transitions
 
-1. Grow 
+<details open>
+
+ <summary>1. Grow </summary>
 
 ``` css
 /* Grow */
@@ -165,7 +165,13 @@ css 并不像 js 相互关联,
 }
 ```
 
-2. Shrink
+> [css-属性解释](#css-属性-解释)
+
+</details>
+
+<details>
+
+ <summary>2. Shrink</summary>
 
 ``` css
 /* Shrink */
@@ -189,17 +195,23 @@ css 并不像 js 相互关联,
 }
 ```
 
-3. Pulse
+> [transform:perspective](#transform)
+
+</details>
+
+<details>
+
+ <summary>3. Pulse</summary>
 
 ``` css
 /* Pulse */
 @-webkit-keyframes hvr-pulse {/*  动画效果名称-定义 */
-  25% {  /* 时间 25% ～ 75% */
+  25% {  /* 时间 0% ～ 25% */
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     /*  先大 */
   }
-  75% { /* 时间 75% ～ 100% */
+  75% { /* 时间 25% ～ 75% */
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
     /* 后小 */
@@ -223,6 +235,10 @@ css 并不像 js 相互关联,
   box-shadow: 0 0 1px transparent;
 }
 .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+  /* 鼠标位于元素 */
+/* 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 */
+/* 它代表的是用户按下按键和松开按键之间的时间 */
+
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
   /* 动画名字 */
@@ -237,8 +253,11 @@ css 并不像 js 相互关联,
 
 }
 ```
+</details>
 
-4. Pulse-Grow 
+<details>
+
+ <summary>4. Pulse-Grow</summary>
 
 ``` css
 /* Pulse Grow */
@@ -262,6 +281,10 @@ css 并不像 js 相互关联,
   box-shadow: 0 0 1px transparent;
 }
 .hvr-pulse-grow:hover, .hvr-pulse-grow:focus, .hvr-pulse-grow:active {
+  /* 鼠标位于元素 */
+/* 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 */
+/* 它代表的是用户按下按键和松开按键之间的时间 */
+
   -webkit-animation-name: hvr-pulse-grow;
   animation-name: hvr-pulse-grow;
   -webkit-animation-duration: 0.3s;
@@ -270,17 +293,22 @@ css 并不像 js 相互关联,
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+  /* infinite 无限循环播放动画. */
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
   /* 动画交替反向运行 */
 }
 ```
+</details>
 
-5. Pulse-Shrink
+<details>
+
+ <summary>5. Pulse-Shrink</summary>
 
 ``` css
 /* Pulse Shrink */
-@-webkit-keyframes hvr-pulse-shrink {
+@-webkit-keyframes hvr-pulse-shrink { 
+  /* 动画名称-动作定义 */
   to {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
@@ -300,6 +328,10 @@ css 并不像 js 相互关联,
   box-shadow: 0 0 1px transparent;
 }
 .hvr-pulse-shrink:hover, .hvr-pulse-shrink:focus, .hvr-pulse-shrink:active {
+  /* 鼠标位于元素 */
+/* 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 */
+/* 它代表的是用户按下按键和松开按键之间的时间 */
+
   -webkit-animation-name: hvr-pulse-shrink;
   animation-name: hvr-pulse-shrink;
   -webkit-animation-duration: 0.3s;
@@ -308,62 +340,218 @@ css 并不像 js 相互关联,
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+    /* infinite 无限循环播放动画. */
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
+   /* 动画交替反向运行 */
 }
 ```
+
+- [perspective](#transform)
+
+
+
+</details>
+
+<details>
+
+ <summary>6. Push</summary>
+
+``` css
+/* Push */
+@-webkit-keyframes hvr-push {
+  /*  0%~50% 先小 */
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  /* 50%～100% 后大 */
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.hvr-push {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-push:hover, .hvr-push:focus, .hvr-push:active {
+  /* 鼠标位于元素 */
+  /* 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 */
+  /* 它代表的是用户按下按键和松开按键之间的时间 */
+
+  -webkit-animation-name: hvr-push;
+  animation-name: hvr-push;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  /*  运行一次 */
+}
+```
+</details>
+
+<details>
+
+ <summary>7. Pop</summary>
+
+``` css
+/* Pop */
+@-webkit-keyframes hvr-pop {
+  /* 0~50% 大 */
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+@keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+.hvr-pop {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
+  -webkit-animation-name: hvr-pop;
+  animation-name: hvr-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  /* 运行1次 */
+}
+```
+</details>
+
+<details>
+ 
+<summary>8. Bounce In </summary>
+
+
+``` css
+/* Bounce In */
+.hvr-bounce-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  /* 变大 */
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  /*  运动曲线 先快 中慢 后快 */
+}
+```
+</details>
+
+<details>
+
+<summary>9. Bounce Out </summary>
+
+``` css
+/* Bounce Out */
+.hvr-bounce-out {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-out:hover, .hvr-bounce-out:focus, .hvr-bounce-out:active {
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  /* 变小 */
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  /*  运动曲线 先快 中慢 后快 */
+  
+}
+```
+
+</details>
 ---
 
 ### css-属性-解释
 
-- display
+#### display
 
 > CSS属性指定用于元素的呈现框的类型
 
-- vertical-align
+#### vertical-align
 
 > CSS 的属性 vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
 
 > middle - 元素中垂线与父元素的基线加上小写x一半的高度值对齐。
 
-- transform
+#### transform
 
 > CSS transform 属性允许你修改CSS视觉格式模型的坐标空间。使用它，元素可以被转换（translate）、旋转（rotate）、缩放（scale）、倾斜（skew）。 只应用-`display:*block*` 的元素
 
 > [perspective >> 属性指定了观察者与z=0平面的距离](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective)
 
-- box-shadow
+#### box-shadow
 
 > 定义元素-broder-边缘阴影
 
-- backface-visibility
+#### backface-visibility
 
 >  属性指定当元素背面朝向观察者时是否可见
 
-- -moz-osx-font-smoothing
+#### -moz-osx-font-smoothing
 
 > Firefox 实现了名为 -moz-osx-font-smoothing 的相似属性。这个属性仅在 Mac OS X / macOS 下生效。
 
-- transition-duration
+#### transition-duration
 
 > 属性以秒或毫秒为单位指定过渡动画所需的时间。默认值为 0s ，表示不出现过渡动画
 
-- transition-property
+#### transition-property
 
 > 指定哪个或哪些 CSS 属性用于过渡。只有指定的属性才会在过渡中发生动画，其它属性仍如通常那样瞬间变化。
 
-- animation-direction
+#### animation-direction
 
 >  CSS 属性指示动画是否反向播放
 
-- :hover
+#### :hover
 
 > CSS伪类适用于用户使用指示设备虚指一个元素（没有激活它）的情况
 
-- :focus
+#### :focus
 
 > 当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发
 
-- :active
+#### :active
 
 > 它代表的是用户按下按键和松开按键之间的时间
